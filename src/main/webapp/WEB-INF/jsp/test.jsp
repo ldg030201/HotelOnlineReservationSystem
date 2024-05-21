@@ -10,5 +10,7 @@
 </head>
 <body>
     test
+    <br>
+    ${test}
 </body>
 </html>
