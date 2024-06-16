@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tuk.hors.room.service.impl.RoomDAO">
+    <select id="selectRoomList" resultType="com.tuk.hors.room.DTO.RoomDTO">
+        SELECT
+            ROOM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_IMG_URL
+        FROM
+            ROOM
+        ORDER BY ROOM_ID
+        LIMIT 3
+    </select>
+</mapper>

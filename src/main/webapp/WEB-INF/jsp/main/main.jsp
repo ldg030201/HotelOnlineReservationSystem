@@ -12,6 +12,134 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script type="text/javascript" src="/js/daterangpickerConfig.js"></script>
     <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js" integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4" crossorigin="anonymous"></script>
+    <style>
+        .div,
+        .div * {
+            box-sizing: border-box;
+        }
+        .div {
+            background: #ffffff;
+            height: 1539px;
+            position: relative;
+            overflow: hidden;
+        }
+        .c-bucket-list-graphic-promo-article-2000-x-624-1 {
+            width: 1920px;
+            height: 672px;
+            position: absolute;
+            left: 0%;
+            top: 0px;
+            object-fit: cover;
+        }
+        .ellipse-1 {
+            background: #ffffff;
+            border-radius: 50%;
+            width: 1920px;
+            height: 886px;
+            position: absolute;
+            top: 500px;
+        }
+        .vector {
+            position: absolute;
+            object-fit: contain;
+            overflow: visible;
+            cursor: pointer;
+            width: 4.32%;
+            height: 2.94%;
+            right: 92.93%;
+            left: 2.74%;
+            bottom: 95.3%;
+            top: 1.75%;
+        }
+
+        .group-4 {
+            position: absolute;
+            inset: 0;
+        }
+
+        .rectangle-5 {
+            background: #466e8b;
+            width: 10%;
+            height: 3%;
+            position: absolute;
+            left: calc(50% - 5%);
+            right: calc(50% - 5%);
+            bottom: 93.89%;
+            top: 1.75%;
+        }
+
+        .logo {
+            color: #ffffff;
+            text-align: center;
+            font-family: "Hahmlet-Bold", sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            position: absolute;
+            left: calc(50% - 6.4%);
+            right: calc(50% - 6.4%);
+            width: 12.8%;
+            bottom: 93.89%;
+            top: 1.88%;
+            height: 4.22%;
+        }
+        .rectangle-2 {
+            background: #ffffff;
+            border-style: solid;
+            border-color: #000000;
+            border-width: 3px;
+            width: 928px;
+            height: 76px;
+            position: absolute;
+            left: 490px;
+            top: 506px;
+        }
+        .div2 {
+            color: #000000;
+            text-align: left;
+            font-family: "Hahmlet-Bold", sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            position: absolute;
+            left: 175px;
+            top: 515px;
+            width: 858px;
+            height: 57px;
+        }
+
+        .rectangle-3 {
+            border-radius: 10px;
+            border-style: solid;
+            border-color: #000000;
+            border-width: 3px;
+            width: 928px;
+            height: 676px;
+            position: absolute;
+            left: 490px;
+            top: 673px;
+            object-fit: cover;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            left: 520px;
+            top: 515px;
+        }
+
+        .button {
+            color: #000000;
+            text-align: center;
+            font-family: "Hahmlet-Bold", sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            width: 280px; /* Adjust width as needed */
+            height: 57px;
+            background-color: transparent; /* Make background transparent */
+            border: 1px solid transparent; /* Make border transparent */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+    </style>
     <script>
         $(() => {
             $(document).on('click', '.leftMenu', function () {
