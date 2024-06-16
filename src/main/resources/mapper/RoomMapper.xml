@@ -43,4 +43,13 @@
             ROOM_ID = #{roomId}
             AND USER_CODE = #{userCode}
     </delete>
+    <select id="selectUserReservationList" resultType="com.tuk.hors.room.DTO.RoomDTO">
+        SELECT
+            re.RESERVATION_ID, re.ROOM_ID, re.USER_CODE, ro.ROOM_NAME, ro.ROOM_PRICE, ro.ROOM_DESC, ro.ROOM_IMG_URL, ro.NUM_PERSON
+        FROM
+            reservation re
+            LEFT JOIN room ro ON re.ROOM_ID = ro.ROOM_ID
+        WHERE
+            re.USER_CODE = #{userCode}
+    </select>
 </mapper>

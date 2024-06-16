@@ -68,4 +68,11 @@ public class RoomController {
         param.put("userCode", userCode);
         roomService.deleteReservation(param);
     }
+
+    @GetMapping("/user-reservation")
+    public String userReservation(Model model, @SessionAttribute(name = "userCode", required = false) String userCode) {
+        model.addAttribute("reservationList", roomService.selectUserReservationList(userCode));
+
+        return "room/user-reservation";
+    }
 }

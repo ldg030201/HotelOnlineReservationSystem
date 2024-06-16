@@ -15,4 +15,6 @@ public interface RoomService {
     void insertReservation(Map<String, Object> param);
 
     void deleteReservation(Map<String, Object> param);
+
+    List<RoomDTO> selectUserReservationList(String userCode);
 }

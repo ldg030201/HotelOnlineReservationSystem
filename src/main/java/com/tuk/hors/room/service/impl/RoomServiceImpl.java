@@ -39,4 +39,9 @@ public class RoomServiceImpl implements RoomService {
     public void deleteReservation(Map<String, Object> param) {
         roomDAO.deleteReservation(param);
     }
+
+    @Override
+    public List<RoomDTO> selectUserReservationList(String userCode) {
+        return roomDAO.selectUserReservationList(userCode);
+    }
 }
