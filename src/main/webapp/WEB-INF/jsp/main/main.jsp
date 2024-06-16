@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -10,11 +11,19 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script type="text/javascript" src="/js/daterangpickerConfig.js"></script>
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js" integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4" crossorigin="anonymous"></script>
     <script>
         $(() => {
             $(document).on('click', '.leftMenu', function () {
                 $('#leftMenuDiv').toggle();
                 $('#mainDiv').toggle();
+            }).on('click', '#login', function () {
+                Kakao.Auth.authorize({
+                    redirectUri: 'http://${serverIp}:8080/main/login',
+                });
+            }).on('click', '#loginOut', function () {
+                if(!confirm("로그아웃 하시겠습니까?")) return false;
+                location.href = "/main/logout";
             });
 
             $('#date').daterangepicker({
@@ -26,6 +35,8 @@
                 console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
             });
         });
+
+        Kakao.init('${kakaoApiJs}');
     </script>
 </head>
 <body>
@@ -64,13 +75,17 @@
     <div style="background: rgba(191, 191, 191, 0.5); left: 50%; width: 50%; height: 100%; position: absolute; backdrop-filter: blur(25px);"></div>
     <div style="background: #ffffff; border-style: solid; border-color: #000000; border-width: 3px; width: 50%; height: 100%; position: absolute;"></div>
     <button style="background: #466e8b; width: 163px; height: 62px; position: absolute; left: 750px; top: 26px;"></button>
-    <button style="color: #ffffff; text-align: center; font-family: 'Inter-Bold', sans-serif; font-size: 45px; font-weight: 700; position: absolute; left: 764px; top: 30px; cursor: pointer;">로그인</button>
-    <button style="color: #000000; text-align: left; font-family: 'Hahmlet-Bold', sans-serif; font-size: 45px; font-weight: 700; position: absolute; left: 64px; top: 201px; width: 310px; height: 54px; cursor: pointer;">내 정보</button>
-    <button style="color: #000000; text-align: left; font-family: 'Hahmlet-Bold', sans-serif; font-size: 45px; font-weight: 700; position: absolute; left: 64px; top: 321px; width: 310px; height: 54px; cursor: pointer;">숙소 리스트</button>
-    <button style="color: #000000; text-align: left; font-family: 'Hahmlet-Bold', sans-serif; font-size: 45px; font-weight: 700; position: absolute; left: 64px; top: 437px; width: 310px; height: 54px; cursor: pointer;">예약 목록</button>
-    <div style="border-style: solid; border-color: #000000; border-width: 3px 0 0 0; width: 140px; height: 0px; position: absolute; left: 64px; top: 265.25px; transform-origin: 0 0; transform: rotate(0deg) scale(1, 1);"></div>
-    <div style="border-style: solid; border-color: #000000; border-width: 3px 0 0 0; width: 230px; height: 0px; position: absolute; left: 64px; top: 383.51px;"></div>
-    <div style="border-style: solid; border-color: #000000; border-width: 3px 0 0 0; width: 190px; height: 0px; position: absolute; left: 64px; top: 500.5px;"></div>
+    <c:if test="${empty userCode}">
+        <button style="color: #ffffff; text-align: center; font-family: 'Inter-Bold', sans-serif; font-size: 45px; font-weight: 700; position: absolute; left: 764px; top: 30px; cursor: pointer;" id="login">로그인</button>
+    </c:if>
+    <c:if test="${not empty userCode}">
+        <button style="color: #ffffff; text-align: center; font-family: 'Inter-Bold', sans-serif; font-size: 35px; font-weight: 700; position: absolute; left: 764px; top: 30px; cursor: pointer;" id="loginOut">로그아웃</button>
+    </c:if>
+    <button style="color: #000000; text-align: left; font-family: 'Hahmlet-Bold', sans-serif; font-size: 45px; font-weight: 700; position: absolute; left: 64px; top: 201px; width: 310px; height: 54px; cursor: pointer;">숙소 리스트</button>
+    <c:if test="${not empty userCode}">
+        <button style="color: #000000; text-align: left; font-family: 'Hahmlet-Bold', sans-serif; font-size: 45px; font-weight: 700; position: absolute; left: 64px; top: 321px; width: 310px; height: 54px; cursor: pointer;">예약 목록</button>
+    </c:if>
+    <%--<button style="color: #000000; text-align: left; font-family: 'Hahmlet-Bold', sans-serif; font-size: 45px; font-weight: 700; position: absolute; left: 64px; top: 437px; width: 310px; height: 54px; cursor: pointer;">내 정보</button>--%>
     <img class="leftMenu" src="/svg/left-menu-close.svg" style="width: 4.13%; height: 4.7%; position: absolute; right: 92.63%; left: 3.24%; bottom: 93.94%; top: 1.36%; overflow: visible; cursor: pointer;"/>
 </div>
 </body>
