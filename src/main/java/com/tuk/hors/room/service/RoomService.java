@@ -13,4 +13,6 @@ public interface RoomService {
     RoomDTO selectRandomRoomInfo(Map<String, Object> param);
 
     void insertReservation(Map<String, Object> param);
+
+    void deleteReservation(Map<String, Object> param);
 }

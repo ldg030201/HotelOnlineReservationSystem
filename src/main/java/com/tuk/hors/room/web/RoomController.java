@@ -40,6 +40,7 @@ public class RoomController {
         model.addAttribute("serverIp", serverIp);
         model.addAttribute("userCode", userCode);
 
+        param.put("userCode", userCode);
         model.addAttribute("roomInfo", roomService.selectRoomInfo(param));
         model.addAttribute("randomInfo", roomService.selectRandomRoomInfo(param));
 
@@ -55,5 +56,16 @@ public class RoomController {
 
         param.put("userCode", userCode);
         roomService.insertReservation(param);
+    }
+
+    @ResponseBody
+    @PostMapping("/cancel-reservation")
+    public void cancelReservation(@RequestParam Map<String, Object> param, @SessionAttribute(name = "userCode", required = false) String userCode) {
+        if (userCode == null || userCode.isEmpty()) {
+            throw new RuntimeException();
+        }
+
+        param.put("userCode", userCode);
+        roomService.deleteReservation(param);
     }
 }

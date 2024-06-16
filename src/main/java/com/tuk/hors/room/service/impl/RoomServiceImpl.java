@@ -34,4 +34,9 @@ public class RoomServiceImpl implements RoomService {
     public void insertReservation(Map<String, Object> param) {
         roomDAO.insertReservation(param);
     }
+
+    @Override
+    public void deleteReservation(Map<String, Object> param) {
+        roomDAO.deleteReservation(param);
+    }
 }

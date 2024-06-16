@@ -12,8 +12,11 @@
     <select id="selectRoomInfo" resultType="com.tuk.hors.room.DTO.RoomDTO">
         SELECT
             ROOM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_IMG_URL
+            <if test='userCode != null and userCode != ""'>
+                ,IF(EXISTS(SELECT * FROM reservation WHERE ROOM_ID = r.ROOM_ID AND USER_CODE = #{userCode}), 'Y', 'N') AS RESERVATION_YN
+            </if>
         FROM
-            room
+            room r
         WHERE
             ROOM_ID = #{roomId}
     </select>
@@ -21,7 +24,7 @@
         SELECT
             ROOM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_IMG_URL
         FROM
-            room
+            room r
         WHERE
             ROOM_ID != #{roomId}
         ORDER BY RAND()
@@ -34,4 +37,10 @@
             #{roomId}, #{userCode}
         )
     </insert>
+    <delete id="deleteReservation">
+        DELETE FROM reservation
+        WHERE
+            ROOM_ID = #{roomId}
+            AND USER_CODE = #{userCode}
+    </delete>
 </mapper>

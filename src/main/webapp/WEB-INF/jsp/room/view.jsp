@@ -190,6 +190,25 @@
                     location.reload();
                 }
                 ,error: () => alert("예약하던 중 오류가 발생했습니다.")
+            });
+        }
+
+        function fnCancelReservation() {
+            if(!confirm("예약을 취소 하시겠습니까?")) {
+                return false;
+            }
+
+            $.ajax({
+                url: '/room/cancel-reservation'
+                ,type: 'post'
+                ,data: {
+                    roomId: '${roomInfo.roomId}'
+                }
+                ,success: () => {
+                    alert("정상적으로 예약 취소 되었습니다.");
+                    location.reload();
+                }
+                ,error: () => alert("예약 취소하던 중 오류가 발생했습니다.")
             })
         }
     </script>
@@ -215,7 +234,12 @@
         <button class="div5" onclick="return false;">예약하시려면 로그인을 해주세요.</button>
     </c:if>
     <c:if test="${not empty userCode}">
-        <button class="div5" onclick="fnReservation();">예약하기</button>
+        <c:if test="${not empty roomInfo.reservationYn and roomInfo.reservationYn eq 'Y'}">
+            <button class="div5" onclick="fnCancelReservation();">예약취소하기</button>
+        </c:if>
+        <c:if test="${empty roomInfo.reservationYn or roomInfo.reservationYn eq 'N'}">
+            <button class="div5" onclick="fnReservation();">예약하기</button>
+        </c:if>
     </c:if>
 </div>
 <div style="background: #ffffff; height: 1539px; position: relative; display: none;" id="leftMenuDiv">

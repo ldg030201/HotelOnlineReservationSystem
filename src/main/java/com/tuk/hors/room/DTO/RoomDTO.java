@@ -13,4 +13,5 @@ public class RoomDTO {
     private Integer roomPrice;
     private String roomDesc;
     private String roomImgUrl;
+    private String reservationYn;
 }
