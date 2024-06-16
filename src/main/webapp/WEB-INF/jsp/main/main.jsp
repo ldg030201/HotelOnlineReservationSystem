@@ -12,6 +12,11 @@
     <script type="text/javascript" src="/js/daterangpickerConfig.js"></script>
     <script>
         $(() => {
+            $(document).on('click', '.leftMenu', function () {
+                $('#leftMenuDiv').toggle();
+                $('#mainDiv').toggle();
+            });
+
             $('#date').daterangepicker({
                 "showDropdowns": true,
                 "locale": localeData,
@@ -24,11 +29,11 @@
     </script>
 </head>
 <body>
-<div class="div">
+<div class="div" id="mainDiv">
     <img class="c-bucket-list-graphic-promo-article-2000-x-624-1" src="/img/mainImg.png"/>
     <div class="ellipse-1"></div>
     <div class="rectangle-5"></div>
-    <img class="vector" src="/svg/leftmenu.svg" />
+    <img class="vector leftMenu" src="/svg/leftmenu.svg" />
     <div class="logo">LOGO</div>
     <div class="rectangle-2"></div>
     <div class="button-container">
@@ -54,6 +59,19 @@
             map: map
         });
     </script>
+</div>
+<div style="background: #ffffff; height: 1539px; position: relative; display: none;" id="leftMenuDiv">
+    <div style="background: rgba(191, 191, 191, 0.5); left: 50%; width: 50%; height: 100%; position: absolute; backdrop-filter: blur(25px);"></div>
+    <div style="background: #ffffff; border-style: solid; border-color: #000000; border-width: 3px; width: 50%; height: 100%; position: absolute;"></div>
+    <button style="background: #466e8b; width: 163px; height: 62px; position: absolute; left: 750px; top: 26px;"></button>
+    <button style="color: #ffffff; text-align: center; font-family: 'Inter-Bold', sans-serif; font-size: 45px; font-weight: 700; position: absolute; left: 764px; top: 30px; cursor: pointer;">로그인</button>
+    <button style="color: #000000; text-align: left; font-family: 'Hahmlet-Bold', sans-serif; font-size: 45px; font-weight: 700; position: absolute; left: 64px; top: 201px; width: 310px; height: 54px; cursor: pointer;">내 정보</button>
+    <button style="color: #000000; text-align: left; font-family: 'Hahmlet-Bold', sans-serif; font-size: 45px; font-weight: 700; position: absolute; left: 64px; top: 321px; width: 310px; height: 54px; cursor: pointer;">숙소 리스트</button>
+    <button style="color: #000000; text-align: left; font-family: 'Hahmlet-Bold', sans-serif; font-size: 45px; font-weight: 700; position: absolute; left: 64px; top: 437px; width: 310px; height: 54px; cursor: pointer;">예약 목록</button>
+    <div style="border-style: solid; border-color: #000000; border-width: 3px 0 0 0; width: 140px; height: 0px; position: absolute; left: 64px; top: 265.25px; transform-origin: 0 0; transform: rotate(0deg) scale(1, 1);"></div>
+    <div style="border-style: solid; border-color: #000000; border-width: 3px 0 0 0; width: 230px; height: 0px; position: absolute; left: 64px; top: 383.51px;"></div>
+    <div style="border-style: solid; border-color: #000000; border-width: 3px 0 0 0; width: 190px; height: 0px; position: absolute; left: 64px; top: 500.5px;"></div>
+    <img class="leftMenu" src="/svg/left-menu-close.svg" style="width: 4.13%; height: 4.7%; position: absolute; right: 92.63%; left: 3.24%; bottom: 93.94%; top: 1.36%; overflow: visible; cursor: pointer;"/>
 </div>
 </body>
 </html>
