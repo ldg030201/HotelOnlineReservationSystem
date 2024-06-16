@@ -204,7 +204,7 @@
                 아래 리뷰를 클릭하여 리뷰를 남겨주세요.
             </a>
         </div>
-        <button class="rectangle-${status.count}">리뷰</button>
+        <a href="/room/review?roomId=${item.roomId}" class="rectangle-${status.count}" style="text-align: center; line-height: 70px;">리뷰</a>
     </c:forEach>
 </div>
 

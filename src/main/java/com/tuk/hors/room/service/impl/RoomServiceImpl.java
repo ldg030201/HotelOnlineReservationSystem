@@ -1,5 +1,6 @@
 package com.tuk.hors.room.service.impl;
 
+import com.tuk.hors.room.DTO.ReviewDTO;
 import com.tuk.hors.room.DTO.RoomDTO;
 import com.tuk.hors.room.service.RoomService;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,15 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public List<RoomDTO> selectUserReservationList(String userCode) {
         return roomDAO.selectUserReservationList(userCode);
+    }
+
+    @Override
+    public void insertReview(Map<String, Object> param) {
+        roomDAO.insertReview(param);
+    }
+
+    @Override
+    public ReviewDTO selectReviewInfo(Map<String, Object> param) {
+        return roomDAO.selectReviewInfo(param);
     }
 }
