@@ -27,4 +27,11 @@
         ORDER BY RAND()
         LIMIT 1
     </select>
+    <insert id="insertReservation">
+        INSERT INTO reservation(
+            ROOM_ID, USER_CODE
+        ) VALUES (
+            #{roomId}, #{userCode}
+        )
+    </insert>
 </mapper>

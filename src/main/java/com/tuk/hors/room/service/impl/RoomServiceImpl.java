@@ -29,4 +29,9 @@ public class RoomServiceImpl implements RoomService {
     public RoomDTO selectRandomRoomInfo(Map<String, Object> param) {
         return roomDAO.selectRandomRoomInfo(param);
     }
+
+    @Override
+    public void insertReservation(Map<String, Object> param) {
+        roomDAO.insertReservation(param);
+    }
 }

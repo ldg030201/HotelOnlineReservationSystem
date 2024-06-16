@@ -143,13 +143,18 @@
             top: 1.23%;
         }
 
-        .rectangle-11 {
-            background: rgba(255, 255, 255, 0.12);
-            width: 7368px;
-            height: 6194px;
+        .div5 {
+            color: #000000;
+            text-align: center;
+            font-family: "Hahmlet-Regular", sans-serif;
+            font-size: 38px;
+            font-weight: 400;
             position: absolute;
-            left: -5477px;
-            top: -822px;
+            left: calc(50% - 495.5px);
+            top: calc(50% - -609.5px);
+            width: 440px;
+            height: 67px;
+            cursor: pointer;
         }
     </style>
     <script>
@@ -168,6 +173,25 @@
 
             Kakao.init('${kakaoApiJs}');
         });
+
+        function fnReservation() {
+            if(!confirm("예약하시겠습니까?")) {
+                return false;
+            }
+
+            $.ajax({
+                url: '/room/reservation'
+                ,type: 'post'
+                ,data: {
+                    roomId: '${roomInfo.roomId}'
+                }
+                ,success: () => {
+                    alert("정상적으로 예약이 되었습니다.");
+                    location.reload();
+                }
+                ,error: () => alert("예약하던 중 오류가 발생했습니다.")
+            })
+        }
     </script>
 </head>
 <body>
@@ -187,6 +211,12 @@
     </a>
     <img class="image-2" src="${randomInfo.roomImgUrl}" />
     <img class="vector leftMenu" src="/svg/leftmenu.svg" />
+    <c:if test="${empty userCode}">
+        <button class="div5" onclick="return false;">예약하시려면 로그인을 해주세요.</button>
+    </c:if>
+    <c:if test="${not empty userCode}">
+        <button class="div5" onclick="fnReservation();">예약하기</button>
+    </c:if>
 </div>
 <div style="background: #ffffff; height: 1539px; position: relative; display: none;" id="leftMenuDiv">
     <div style="background: rgba(191, 191, 191, 0.5); left: 50%; width: 50%; height: 100%; position: absolute; backdrop-filter: blur(25px);"></div>
