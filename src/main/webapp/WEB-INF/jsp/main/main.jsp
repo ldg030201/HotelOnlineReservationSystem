@@ -28,6 +28,7 @@
     <img class="c-bucket-list-graphic-promo-article-2000-x-624-1" src="/img/mainImg.png"/>
     <div class="ellipse-1"></div>
     <div class="rectangle-5"></div>
+    <img class="vector" src="/svg/leftmenu.svg" />
     <div class="logo">LOGO</div>
     <div class="rectangle-2"></div>
     <div class="button-container">
