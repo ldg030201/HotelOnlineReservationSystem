@@ -176,7 +176,7 @@
     <div class="logo">LOGO</div>
     <div class="rectangle-2"></div>
     <div class="button-container">
-        <form action="#" method="get">
+        <form action="/room/list" method="get">
             <input type="text" class="button" placeholder="날짜 입력" id="date" required>
             <input type="number" class="button" placeholder="인원 수" required>
             <button class="button" type="submit">검색</button>

@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -323,7 +323,7 @@
 <body>
 <div class="main-container" id="mainDiv">
     <c:forEach var="item" items="${roomList}" varStatus="status">
-        <img class="image-${status.count}" src="/img/room/${status.count}.png"/>
+        <img class="image-${status.count}" src="${item.roomImgUrl}"/>
     </c:forEach>
     <div class="search-bar" style="text-align: center; font-size: 35px;">숙소 목록</div>
     <%--<form>
@@ -334,7 +334,7 @@
         </div>
     </form>--%>
     <c:forEach var="item" items="${roomList}" varStatus="status">
-        <a href="#" class="lodging-name-${status.count}">${item.roomName}</a>
+        <a href="/room/view?roomId=${item.roomId}" class="lodging-name-${status.count}">${item.roomName}</a>
         <div class="description-${status.count}">
             ${item.roomDesc}
         </div>

@@ -5,8 +5,26 @@
         SELECT
             ROOM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_IMG_URL
         FROM
-            ROOM
+            room
         ORDER BY ROOM_ID
         LIMIT 3
+    </select>
+    <select id="selectRoomInfo" resultType="com.tuk.hors.room.DTO.RoomDTO">
+        SELECT
+            ROOM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_IMG_URL
+        FROM
+            room
+        WHERE
+            ROOM_ID = #{roomId}
+    </select>
+    <select id="selectRandomRoomInfo" resultType="com.tuk.hors.room.DTO.RoomDTO">
+        SELECT
+            ROOM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_IMG_URL
+        FROM
+            room
+        WHERE
+            ROOM_ID != #{roomId}
+        ORDER BY RAND()
+        LIMIT 1
     </select>
 </mapper>

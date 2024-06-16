@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import java.util.Map;
@@ -34,5 +35,17 @@ public class RoomController {
         model.addAttribute("roomList", roomService.selectRoomList(param));
 
         return "room/list";
+    }
+
+    @GetMapping("/view")
+    public String view(Model model, @SessionAttribute(name = "userCode", required = false) String userCode, @RequestParam Map<String, Object> param) {
+        model.addAttribute("kakaoApiJs", kakaoApiJs);
+        model.addAttribute("serverIp", serverIp);
+        model.addAttribute("userCode", userCode);
+
+        model.addAttribute("roomInfo", roomService.selectRoomInfo(param));
+        model.addAttribute("randomInfo", roomService.selectRandomRoomInfo(param));
+
+        return "room/view";
     }
 }

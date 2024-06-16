@@ -9,4 +9,8 @@ import java.util.Map;
 @Mapper
 public interface RoomDAO {
     List<RoomDTO> selectRoomList(Map<String, Object> param);
+
+    RoomDTO selectRoomInfo(Map<String, Object> param);
+
+    RoomDTO selectRandomRoomInfo(Map<String, Object> param);
 }
