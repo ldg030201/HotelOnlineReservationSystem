@@ -11,7 +11,7 @@ public class RoomInfo {
     private String roomName;
     private Integer roomPrice;
     private Integer numPerson;
-    private Integer roomDesc;
+    private String roomDesc;
     private String roomImgUrl;
     private MultipartFile imgFile;
 

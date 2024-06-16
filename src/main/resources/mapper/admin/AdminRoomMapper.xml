@@ -11,4 +11,11 @@
             (#{roomName},#{roomPrice},#{roomDesc},#{roomImgUrl},#{numPerson})
     </insert>
 
+    <select id="selectRoomList" resultType="com.tuk.hors.admin.vo.RoomInfo">
+        SELECT
+            ROOM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_IMG_URL, NUM_PERSON
+        FROM
+            ROOM
+        ORDER BY ROOM_ID DESC
+    </select>
 </mapper>

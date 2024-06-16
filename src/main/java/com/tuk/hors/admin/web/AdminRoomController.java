@@ -1,7 +1,7 @@
 package com.tuk.hors.admin.web;
 
+import org.springframework.ui.Model;
 import com.tuk.hors.admin.service.AdminRoomService;
-import com.tuk.hors.admin.service.AdminService;
 import com.tuk.hors.admin.vo.RoomInfo;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.UUID;
 
 @Controller
 @Slf4j
@@ -42,6 +44,20 @@ public class AdminRoomController {
         }
     }
 
+    @GetMapping("/list")
+    public String roomListPage(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+
+        List<RoomInfo> list = adminRoomService.selectRoomList();
+        model.addAttribute("roomList",list);
+
+        if(null == session.getAttribute("adminId"))
+            return "admin/login/login";
+        else{
+            return "admin/room/roomList";
+        }
+    }
+
     @PostMapping("/reg")
     public String regRoom(HttpServletRequest request,
                           @ModelAttribute RoomInfo param) {
@@ -51,49 +67,42 @@ public class AdminRoomController {
 
         MultipartFile file = param.getImgFile();
 
-        ZonedDateTime now = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
+        String originalFilename = file.getOriginalFilename();
+        String saveFileName = createSaveFileName(originalFilename);
 
         String path = request.getServletContext().getRealPath("/");
-        String uploadFolder  = path+ "/saveImg/";
-
-        File dir = new File(uploadFolder);
-
-        if (!dir.exists() || !dir.isDirectory()) {
-            dir.mkdirs();
+        String uploadFolder  = path+ "saveImg\\";
+        try {
+            file.transferTo(new File(getFullPath(uploadFolder, saveFileName)));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        if (!file.isEmpty()) {
-            String originalFileName = file.getOriginalFilename();
-            try {
-                file.transferTo(new File(dir+originalFileName));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            String fileExtension = "";
-            fileExtension = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
-            String uploadFileName = "";
-            uploadFileName = now.format(format) + "." + fileExtension;
-            param.setRoomImgUrl(uploadFileName);
+        param.setRoomImgUrl(saveFileName);
 
-            File fileRename = new File(uploadFolder, uploadFileName);
-            File saveFile = new File(uploadFolder, originalFileName);
 
-            saveFile.renameTo(fileRename);
-
-            try {
-                file.transferTo(saveFile);
-            } catch (Exception e) {
-                log.error(e.getMessage());
-            }
-
-        }
         adminRoomService.regRoom(param);
 
 
         if(null == session.getAttribute("adminId"))
             return "admin/login/login";
         else{
-            return "admin/menu";
+            return "admin/room/regSuccess";
         }
+    }
+    private String createSaveFileName(String originalFilename) {
+        String ext = extractExt(originalFilename);
+        String uuid = UUID.randomUUID().toString();
+        return uuid + "." + ext;
+    }
+
+    // 확장자명 구하기
+    private String extractExt(String originalFilename) {
+        int pos = originalFilename.lastIndexOf(".");
+        return originalFilename.substring(pos + 1);
+    }
+
+    // fullPath 만들기
+    private String getFullPath(String uploadPath, String filename) {
+        return uploadPath + filename;
     }
 }

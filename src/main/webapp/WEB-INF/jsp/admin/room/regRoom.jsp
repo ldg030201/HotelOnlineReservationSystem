@@ -13,7 +13,7 @@
 
 </head>
 <body>
-<div class="logo"><a href="#"><img src="/img/admin-logo.png" width="8%"></a></div>
+<div class="logo"><a href="${path}/admin/menu"><img src="/img/admin-logo.png" width="8%"></a></div>
 <form class="content" onsubmit="return false;" method="post" id="form"enctype="multipart/form-data">
     <div class="inputSection">
         <input type="text" placeholder="객실 이름" name="roomName" class="input"/><br>

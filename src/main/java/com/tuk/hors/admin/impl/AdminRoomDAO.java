@@ -1,10 +1,12 @@
 package com.tuk.hors.admin.impl;
 
-import com.tuk.hors.admin.vo.AdminInfo;
 import com.tuk.hors.admin.vo.RoomInfo;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface AdminRoomDAO {
     int insertRoom(RoomInfo param);
+    List<RoomInfo> selectRoomList();
 }

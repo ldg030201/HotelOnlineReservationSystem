@@ -1,11 +1,11 @@
 package com.tuk.hors.admin.impl;
 
 import com.tuk.hors.admin.service.AdminRoomService;
-import com.tuk.hors.admin.service.AdminService;
-import com.tuk.hors.admin.vo.AdminInfo;
 import com.tuk.hors.admin.vo.RoomInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service("AdminRoomService")
 public class AdminRoomServiceImpl implements AdminRoomService {
@@ -15,5 +15,10 @@ public class AdminRoomServiceImpl implements AdminRoomService {
     @Override
     public int regRoom(RoomInfo param) {
         return roomDAO.insertRoom(param);
+    }
+
+    @Override
+    public List<RoomInfo> selectRoomList(){
+        return roomDAO.selectRoomList();
     }
 }
