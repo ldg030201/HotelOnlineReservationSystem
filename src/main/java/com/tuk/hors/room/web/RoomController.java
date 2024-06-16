@@ -75,4 +75,24 @@ public class RoomController {
 
         return "room/user-reservation";
     }
+
+    @GetMapping("/review")
+    public String review(Model model, @RequestParam Map<String, Object> param, @SessionAttribute(name = "userCode", required = false) String userCode) {
+        param.put("userCode", userCode);
+
+        model.addAttribute("roomInfo", roomService.selectRoomInfo(param));
+        model.addAttribute("reviewInfo", roomService.selectReviewInfo(param));
+
+        return "room/review";
+    }
+
+    @ResponseBody
+    @PostMapping("/review-write")
+    public void reviewWrite(@RequestParam Map<String, Object> param, @SessionAttribute(name = "userCode", required = false) String userCode) {
+        if (userCode == null || userCode.isEmpty()) {
+            throw new RuntimeException();
+        }
+
+        roomService.insertReview(param);
+    }
 }
