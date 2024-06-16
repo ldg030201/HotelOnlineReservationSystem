@@ -7,12 +7,12 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="${path}/resources/css/common.css"/>
-    <link rel="stylesheet" href="${path}/resources/css/admin-menu.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/admin-menu.css"/>
     <title>관리자 메뉴</title>
 </head>
 <body>
-<div class="logo"><a href="#"><img src="${path}/resources/img/admin-logo.png" width="15%"></a></div>
+<div class="logo"><a href="${path}/admin/menu"><img src="/img/admin-logo.png" width="15%"></a></div>
 <div class="menuContentBox">
     <div class="menu">
         <div class="topMenu">객실</div>

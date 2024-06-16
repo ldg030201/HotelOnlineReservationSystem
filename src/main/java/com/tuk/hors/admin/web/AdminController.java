@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Slf4j
-@RequestMapping("/admin/login")
+@RequestMapping("/admin")
 public class AdminController {
 
     @Autowired
     private AdminService adminService;
-    @GetMapping("/login-page")
+    @GetMapping("/login/login-page")
     public String loginPage(HttpServletRequest request) {
         HttpSession session = request.getSession();
 
@@ -31,7 +31,7 @@ public class AdminController {
         }
     }
 
-    @PostMapping ("/do-login")
+    @PostMapping ("/login/do-login")
     public String login(Model model, HttpServletRequest request) {
         String adminId = request.getParameter("adminId");
         String adminPw = request.getParameter("adminPw");
@@ -49,11 +49,22 @@ public class AdminController {
             return "admin/menu";
         }
     }
-    @GetMapping ("/logout")
+    @GetMapping ("/login/logout")
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.invalidate();
 
         return "admin/login/login";
+    }
+
+    @GetMapping ("/menu")
+    public String menu(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+
+        if(null == session.getAttribute("adminId"))
+            return "admin/login/login";
+        else{
+            return "admin/menu";
+        }
     }
 }

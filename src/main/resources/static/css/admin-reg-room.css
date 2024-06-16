@@ -1,0 +1,107 @@
+.logo{
+  padding-top: 50px;
+  text-align: center;
+}
+.logo img{
+  cursor: pointer;
+}
+body{
+  background: #414246;
+  font-family: 'LINESeedKR-Bd', sans-serif;
+}
+
+.content{
+  width: 80%;
+  height: 70%;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+}
+
+.input{
+  background: white;
+  width: 80%;
+  height: 10%;
+  font-family: 'LINESeedKR-Bd', sans-serif;
+  margin: 20px;
+  font-size: 20px;
+  padding: 10px;
+}
+textarea{
+  width: 80%;
+  height: 40%;
+  background: white;
+  margin: 20px;
+  font-family: 'LINESeedKR-Bd', sans-serif;
+  resize: none;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.inputSection{
+  width: 50%;
+  flex: 1;
+}
+
+.imgSection{
+  width: 50%;
+  flex: 1;
+}
+
+#btn-upload {
+  width: 30%;
+  height: 10%;
+  line-height: 70px;
+  margin: 0 auto;
+  margin-top: 30%;
+  background: #fff;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background: rgb(77,77,77);
+    color: #fff;
+  }
+}
+
+#file {
+  display: none;
+}
+
+.saveBtn{
+  background: #0C58A6;
+  &:hover {
+    background: #003c77;
+  }
+}
+.btn{
+  color: #ffffff;
+  text-align: center;
+  display: inline-block;
+  margin-top: 5%;
+  cursor: pointer;
+  width: 30%;
+  font-family: 'LINESeedKR-Bd', sans-serif;
+  font-size: 20px;
+  height: 7%;
+
+}
+.cancelBtn{
+  background: #494949;
+  &:hover {
+    background: #000000;
+  }
+}
+.btnBox{
+  text-align: center;
+}
+
+#imgCont{
+  margin-top: 10px;
+  display: none;
+  height: 60%;
+  width: 100%;
+  object-fit:scale-down;
+}

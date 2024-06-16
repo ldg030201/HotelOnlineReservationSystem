@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tuk.hors.admin.impl.AdminRoomDAO">
+
+
+    <insert id="insertRoom"
+            parameterType="com.tuk.hors.admin.vo.RoomInfo">
+        INSERT INTO ROOM
+            (ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_IMG_URL, NUM_PERSON)
+        values
+            (#{roomName},#{roomPrice},#{roomDesc},#{roomImgUrl},#{numPerson})
+    </insert>
+
+</mapper>

@@ -7,13 +7,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="${path}/resources/css/common.css"/>
-    <link rel="stylesheet" href="${path}/resources/css/admin-login.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/admin-login.css"/>
     <title>관리자 로그인</title>
 
 </head>
 <body>
-    <div class="logo"><img src="${path}/resources/img/admin-logo.png" width="25%"></div>
+    <div class="logo"><img src="/img/admin-logo.png" width="25%"></div>
     <h1 class="pageName">관리자 페이지</h1>
     <form method="post" action="${path}/admin/login/do-login" class="loginForm">
         <label>
