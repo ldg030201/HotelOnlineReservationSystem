@@ -9,4 +9,7 @@ import java.util.List;
 public interface AdminRoomDAO {
     int insertRoom(RoomInfo param);
     List<RoomInfo> selectRoomList();
+
+    RoomInfo selectRoomDetail(int roomId);
+    int updateRoom(RoomInfo param);
 }

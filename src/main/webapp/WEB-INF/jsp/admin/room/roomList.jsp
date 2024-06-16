@@ -19,7 +19,7 @@
 
 <div class="content">
     <c:forEach var="item" items="${roomList}" varStatus="status">
-        <div class="room">
+        <div class="room" onclick="detail(${item.roomId});">
             <div class="leftDiv roomDiv">
                 <img src="../../../../../saveImg/${item.roomImgUrl}">
             </div>
@@ -32,7 +32,11 @@
 
         </div>
     </c:forEach>
-
 </div>
 </body>
+<script>
+    function detail(roomId){
+        location.href = "${path}/admin/room/detail/"+roomId;
+    }
+</script>
 </html>

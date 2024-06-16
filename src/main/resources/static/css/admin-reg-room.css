@@ -99,9 +99,14 @@ textarea{
 }
 
 #imgCont{
-  margin-top: 10px;
-  display: none;
   height: 60%;
   width: 100%;
+  margin-top: 10px;
   object-fit:scale-down;
+}
+.show{
+  margin-top: 5% !important;
+}
+.display{
+  display: none;
 }

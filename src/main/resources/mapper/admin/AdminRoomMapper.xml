@@ -18,4 +18,25 @@
             ROOM
         ORDER BY ROOM_ID DESC
     </select>
+
+    <select id="selectRoomDetail" resultType="com.tuk.hors.admin.vo.RoomInfo">
+        SELECT
+            ROOM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_IMG_URL, NUM_PERSON
+        FROM
+            ROOM
+        WHERE ROOM_ID = #{roomId}
+    </select>
+
+    <update id="updateRoom"
+            parameterType="com.tuk.hors.admin.vo.RoomInfo">
+        UPDATE ROOM SET
+            ROOM_NAME = #{roomName}
+            , ROOM_PRICE =#{roomPrice}
+            , ROOM_DESC =#{roomDesc}
+            , NUM_PERSON =#{numPerson}
+        <if test='imgFile != null and imgFile !=""'>
+            , ROOM_IMG_URL =#{roomImgUrl}
+        </if>
+        WHERE ROOM_ID = #{roomId}
+    </update>
 </mapper>

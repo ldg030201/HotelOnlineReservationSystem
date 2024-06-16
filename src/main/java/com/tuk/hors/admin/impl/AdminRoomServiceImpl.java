@@ -21,4 +21,13 @@ public class AdminRoomServiceImpl implements AdminRoomService {
     public List<RoomInfo> selectRoomList(){
         return roomDAO.selectRoomList();
     }
+    @Override
+    public RoomInfo selectRoomDetail(int roomId){
+        return roomDAO.selectRoomDetail(roomId);
+    }
+    @Override
+    public int updateRoom(RoomInfo param) {
+        return roomDAO.updateRoom(param);
+    }
+
 }

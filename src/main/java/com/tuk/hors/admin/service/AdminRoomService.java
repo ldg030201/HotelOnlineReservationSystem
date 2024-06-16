@@ -6,5 +6,10 @@ import java.util.List;
 
 public interface AdminRoomService {
     int regRoom(RoomInfo param);
+
     List<RoomInfo> selectRoomList();
+
+    RoomInfo selectRoomDetail(int roomId);
+
+    int updateRoom(RoomInfo param);
 }

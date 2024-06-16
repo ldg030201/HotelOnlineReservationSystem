@@ -1,5 +1,6 @@
 package com.tuk.hors.admin.web;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.ui.Model;
 import com.tuk.hors.admin.service.AdminRoomService;
 import com.tuk.hors.admin.vo.RoomInfo;
@@ -9,10 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -58,6 +56,57 @@ public class AdminRoomController {
         }
     }
 
+    @GetMapping("/detail/{roomId}")
+    public String roomDetailPage(Model model,
+                                 HttpServletRequest request,
+                                 @PathVariable("roomId") int roomId) {
+        HttpSession session = request.getSession();
+
+        RoomInfo room = adminRoomService.selectRoomDetail(roomId);
+        model.addAttribute("room",room);
+
+        if(null == session.getAttribute("adminId"))
+            return "admin/login/login";
+        else{
+            return "admin/room/uptRoom";
+        }
+    }
+
+    @PostMapping("/update/{roomId}")
+    public String updateRoom(Model model,
+                                 HttpServletRequest request,
+                                 @PathVariable("roomId") int roomId,
+                                @ModelAttribute RoomInfo param) {
+        HttpSession session = request.getSession();
+
+        param.setRoomId(roomId);
+
+        log.info(param.getImgFile().getOriginalFilename());
+
+        MultipartFile file = param.getImgFile();
+        if(param.getRoomImgUrl().equals("")){
+            String originalFilename = file.getOriginalFilename();
+            String saveFileName = createSaveFileName(originalFilename);
+
+            String path = request.getServletContext().getRealPath("/");
+            String uploadFolder  = path+ "saveImg\\";
+            try {
+                file.transferTo(new File(getFullPath(uploadFolder, saveFileName)));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            param.setRoomImgUrl(saveFileName);
+        }
+
+        adminRoomService.updateRoom(param);
+
+
+        if(null == session.getAttribute("adminId"))
+            return "admin/login/login";
+        else{
+            return "admin/room/regSuccess";
+        }
+    }
     @PostMapping("/reg")
     public String regRoom(HttpServletRequest request,
                           @ModelAttribute RoomInfo param) {
