@@ -1,0 +1,51 @@
+.logo{
+  padding-top: 50px;
+  text-align: center;
+}
+.logo img{
+  cursor: pointer;
+}
+body{
+  background: #414246;
+  font-family: 'LINESeedKR-Bd', sans-serif;
+}
+
+.content{
+  background: #e1e1e1;
+  width: 80%;
+  padding: 5%;
+  text-align: center;
+  margin: 0 auto;
+}
+.room{
+  width: 100%;
+  padding: 20px;
+  color: black;
+  display: inline-block;
+  &:hover{
+    background: rgba(134, 135, 140, 0.67);
+  }
+}
+.roomDiv{
+  float: left;
+  margin-right: 5%;
+}
+.leftDiv img{
+  width: 100%;
+}
+.leftDiv{
+  width: 20%;
+}
+.rightDiv{
+  width: 70%;
+  text-align: left;
+  font-family: 'LINESeedKR-Rg', sans-serif;
+}
+.rightDiv p{
+  padding: 2%;
+}
+.rightDiv h4{
+  background: white;
+  margin-top: 20px;
+  padding: 2%;
+}

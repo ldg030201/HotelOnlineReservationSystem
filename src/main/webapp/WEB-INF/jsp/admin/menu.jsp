@@ -24,7 +24,7 @@
     <div class="menu">
         <div class="topMenu">예약</div>
         <div class="bottomMenu">
-            <a class="nav" href="${path}/admin/reserve/chk"><li>예약 정보 확인</li></a>
+            <a class="nav" href="${path}/admin/reserve"><li>예약 정보 확인</li></a>
         </div>
 
     </div>
