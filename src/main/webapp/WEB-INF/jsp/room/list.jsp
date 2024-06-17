@@ -343,7 +343,14 @@
             가격 : <fmt:formatNumber value="${item.roomPrice}"/>
         </div>
         <div class="rating-select-Start${status.count}">
-            <p>★★★★★</p>
+            <p>
+                ${item.avgScore eq 5 ? '★★★★★' : ''}
+                ${item.avgScore eq 4 ? '★★★★☆' : ''}
+                ${item.avgScore eq 3 ? '★★★☆☆' : ''}
+                ${item.avgScore eq 2 ? '★★☆☆☆' : ''}
+                ${item.avgScore eq 1 ? '★☆☆☆☆' : ''}
+                ${item.avgScore eq 0 ? '리뷰가 등록되지<br>않았습니다.' : ''}
+            </p>
         </div>
     </c:forEach>
     <img class="logo-vector leftMenu" src="/svg/leftmenu.svg" />
