@@ -324,7 +324,7 @@
 <body>
 <div class="main-container" id="mainDiv">
     <c:forEach var="item" items="${roomList}" varStatus="status">
-        <img class="image-${status.count}" src="${item.roomImgUrl}"/>
+        <img class="image-${status.count}" src="../../../../saveImg/${item.roomImgUrl}"/>
     </c:forEach>
     <div class="search-bar" style="text-align: center; font-size: 35px;">숙소 목록</div>
     <%--<form>

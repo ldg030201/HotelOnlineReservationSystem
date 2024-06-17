@@ -197,7 +197,7 @@
     <div class="logo">LOGO</div>
     <div class="div2">예약 목록</div>
     <c:forEach var="item" items="${reservationList}" varStatus="status">
-        <img class="image-${status.count}" src="${item.roomImgUrl}" />
+        <img class="image-${status.count}" src="../../../../saveImg/${item.roomImgUrl}" />
         <div class="frame-${status.count}">
             <a href="/room/view?roomId=${item.roomId}" class="div3">${item.roomName}</a>
             <a class="n">
