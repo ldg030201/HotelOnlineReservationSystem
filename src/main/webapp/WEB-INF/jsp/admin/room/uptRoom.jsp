@@ -67,7 +67,7 @@
         form.submit();
     }
     function cancel(){
-        location.href = "${path}/admin/list";
+        location.href = "${path}/admin/room/list";
     }
 </script>
 </html>

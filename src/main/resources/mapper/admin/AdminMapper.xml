@@ -14,4 +14,19 @@
             AND ADMIN_PW = #{adminPw}
     </select>
 
+    <select id="selectReserveList"
+            resultType="com.tuk.hors.admin.vo.ReserveInfo">
+        SELECT
+            RS.RESERVATION_ID
+            , RS.ROOM_ID
+            , RS.USER_CODE
+            , R.ROOM_NAME
+            , R.ROOM_PRICE
+            , R.ROOM_DESC
+            , R.ROOM_IMG_URL
+            , R.NUM_PERSON
+        FROM RESERVATION AS RS
+        LEFT JOIN ROOM AS R ON RS.ROOM_ID = R.ROOM_ID
+    </select>
+
 </mapper>

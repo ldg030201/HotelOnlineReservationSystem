@@ -2,6 +2,7 @@ package com.tuk.hors.admin.web;
 
 import com.tuk.hors.admin.service.AdminService;
 import com.tuk.hors.admin.vo.AdminInfo;
+import com.tuk.hors.admin.vo.ReserveInfo;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -65,6 +68,24 @@ public class AdminController {
             return "admin/login/login";
         else{
             return "admin/menu";
+        }
+    }
+
+    @GetMapping ("/reserve")
+    public String reservePage(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+
+        List<ReserveInfo> reserveInfoList = adminService.getReserveList();
+        for(ReserveInfo info :reserveInfoList){
+            log.info(info.getRoomName());
+        }
+
+        model.addAttribute("list", reserveInfoList);
+
+        if(null == session.getAttribute("adminId"))
+            return "admin/login/login";
+        else{
+            return "admin/reserve/reserve";
         }
     }
 }
