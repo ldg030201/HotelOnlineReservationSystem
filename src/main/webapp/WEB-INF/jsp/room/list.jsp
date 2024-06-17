@@ -324,7 +324,7 @@
 <body>
 <div class="main-container" id="mainDiv">
     <c:forEach var="item" items="${roomList}" varStatus="status">
-        <img class="image-${status.count}" src="${item.roomImgUrl}"/>
+        <img class="image-${status.count}" src="../../../../saveImg/${item.roomImgUrl}"/>
     </c:forEach>
     <div class="search-bar" style="text-align: center; font-size: 35px;">숙소 목록</div>
     <%--<form>
@@ -343,7 +343,14 @@
             가격 : <fmt:formatNumber value="${item.roomPrice}"/>
         </div>
         <div class="rating-select-Start${status.count}">
-            <p>★★★★★</p>
+            <p>
+                ${item.avgScore eq 5 ? '★★★★★' : ''}
+                ${item.avgScore eq 4 ? '★★★★☆' : ''}
+                ${item.avgScore eq 3 ? '★★★☆☆' : ''}
+                ${item.avgScore eq 2 ? '★★☆☆☆' : ''}
+                ${item.avgScore eq 1 ? '★☆☆☆☆' : ''}
+                ${item.avgScore eq 0 ? '리뷰가 등록되지<br>않았습니다.' : ''}
+            </p>
         </div>
     </c:forEach>
     <img class="logo-vector leftMenu" src="/svg/leftmenu.svg" />

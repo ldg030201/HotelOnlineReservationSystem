@@ -212,7 +212,7 @@
         <div class="header-bar"></div>
         <div class="logo">LOGO</div>
         <img class="vector leftMenu" src="/svg/leftmenu.svg" style="cursor: pointer;"/>
-        <img class="main-image" src="${roomInfo.roomImgUrl}" />
+        <img class="main-image" src="../../../../saveImg/${roomInfo.roomImgUrl}" />
         <div class="accommodation-name">${roomInfo.roomName}</div>
         <div class="review-background"></div>
         <div class="cancel-button-bg"></div>

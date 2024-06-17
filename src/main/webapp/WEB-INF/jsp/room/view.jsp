@@ -228,7 +228,7 @@
     <a class="_4" href="/room/view?roomId=${randomInfo.roomId}">
         ${randomInfo.roomName}
     </a>
-    <img class="image-2" src="${randomInfo.roomImgUrl}" />
+    <img class="image-2" src="../../../../saveImg/${randomInfo.roomImgUrl}" />
     <img class="vector leftMenu" src="/svg/leftmenu.svg" />
     <c:if test="${empty userCode}">
         <button class="div5" onclick="return false;">예약하시려면 로그인을 해주세요.</button>

@@ -3,9 +3,10 @@
 <mapper namespace="com.tuk.hors.room.service.impl.RoomDAO">
     <select id="selectRoomList" resultType="com.tuk.hors.room.DTO.RoomDTO">
         SELECT
-            ROOM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_IMG_URL
+            ROOM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_IMG_URL,
+            (SELECT IFNULL(ROUND(AVG(REVIEW_SCORE)), 0) FROM REVIEW WHERE ROOM_ID = r.ROOM_ID) AS AVG_SCORE
         FROM
-            room
+            room r
         ORDER BY ROOM_ID
         LIMIT 3
     </select>
