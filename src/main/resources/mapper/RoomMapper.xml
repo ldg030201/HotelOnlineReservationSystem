@@ -12,7 +12,8 @@
     </select>
     <select id="selectRoomInfo" resultType="com.tuk.hors.room.DTO.RoomDTO">
         SELECT
-            ROOM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_IMG_URL
+            ROOM_ID, ROOM_NAME, ROOM_PRICE, ROOM_DESC, ROOM_IMG_URL,
+            (SELECT IFNULL(ROUND(AVG(REVIEW_SCORE), 1), 0) FROM REVIEW WHERE ROOM_ID = r.ROOM_ID) AS AVG_SCORE
             <if test='userCode != null and userCode != ""'>
                 ,IF(EXISTS(SELECT * FROM reservation WHERE ROOM_ID = r.ROOM_ID AND USER_CODE = #{userCode}), 'Y', 'N') AS RESERVATION_YN
             </if>

@@ -221,7 +221,7 @@
         ${roomInfo.roomDesc}
     </a>
     <a class="n-n">
-        평점 N.N
+        ${roomInfo.avgScore eq 0 ? '리뷰가 등록되지<br>않았습니다.' : '평점 ' += roomInfo.avgScore}
     </a>
     <div class="rectangle-7"></div>
     <span class="div4">이런 숙소는 어때요?</span>

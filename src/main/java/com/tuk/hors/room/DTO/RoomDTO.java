@@ -14,5 +14,5 @@ public class RoomDTO {
     private String roomDesc;
     private String roomImgUrl;
     private String reservationYn;
-    private String avgScore;
+    private Float avgScore;
 }
