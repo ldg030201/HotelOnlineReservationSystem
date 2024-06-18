@@ -55,9 +55,9 @@
     </select>
     <insert id="insertReview">
         INSERT INTO review(
-            ROOM_ID, REVIEW_SCORE, REVIEW_CONTENT
+            ROOM_ID, USER_CODE, REVIEW_SCORE, REVIEW_CONTENT
         ) VALUES (
-            #{roomId}, #{reviewScore}, #{reviewContent}
+            #{roomId}, #{userCode}, #{reviewScore}, #{reviewContent}
         )
     </insert>
     <select id="selectReviewInfo" resultType="com.tuk.hors.room.DTO.ReviewDTO">
@@ -67,6 +67,6 @@
             review
         WHERE
             ROOM_ID = #{roomId}
-            AND ROOM_ID = #{roomId}
+            AND USER_CODE = #{userCode}
     </select>
 </mapper>

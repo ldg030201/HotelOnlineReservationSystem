@@ -93,6 +93,8 @@ public class RoomController {
             throw new RuntimeException();
         }
 
+        param.put("userCode", userCode);
+
         roomService.insertReview(param);
     }
 }
