@@ -194,7 +194,7 @@
 <div class="div" id="mainDiv">
     <img class="vector leftMenu" src="/svg/leftmenu.svg" />
     <div class="rectangle-5"></div>
-    <div class="logo">LOGO</div>
+    <div class="logo" onclick="location.href='/main/main';">TUK</div>
     <div class="div2">예약 목록</div>
     <c:forEach var="item" items="${reservationList}" varStatus="status">
         <img class="image-${status.count}" src="../../../../saveImg/${item.roomImgUrl}" />

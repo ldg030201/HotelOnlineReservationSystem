@@ -173,7 +173,7 @@
     <div class="ellipse-1"></div>
     <div class="rectangle-5"></div>
     <img class="vector leftMenu" src="/svg/leftmenu.svg" />
-    <div class="logo">LOGO</div>
+    <div class="logo" onclick="location.href='/main/main';">TUK</div>
     <div class="rectangle-2"></div>
     <div class="button-container">
         <form action="/room/list" method="get">

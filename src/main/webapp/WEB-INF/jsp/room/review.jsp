@@ -210,7 +210,7 @@
     <form id="frm">
         <input type="hidden" name="roomId" value="${roomInfo.roomId}">
         <div class="header-bar"></div>
-        <div class="logo">LOGO</div>
+        <div class="logo" onclick="location.href='/main/main';">TUK</div>
         <img class="vector leftMenu" src="/svg/leftmenu.svg" style="cursor: pointer;"/>
         <img class="main-image" src="../../../../saveImg/${roomInfo.roomImgUrl}" />
         <div class="accommodation-name">${roomInfo.roomName}</div>

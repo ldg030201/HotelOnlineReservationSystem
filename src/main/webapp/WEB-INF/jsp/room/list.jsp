@@ -355,7 +355,7 @@
     </c:forEach>
     <img class="logo-vector leftMenu" src="/svg/leftmenu.svg" />
     <div class="header-bar"></div>
-    <div class="logo">LOGO</div>
+    <div class="logo" onclick="location.href='/main/main';">TUK</div>
 </div>
 <div style="background: #ffffff; height: 1539px; position: relative; display: none;" id="leftMenuDiv">
     <div style="background: rgba(191, 191, 191, 0.5); left: 50%; width: 50%; height: 100%; position: absolute; backdrop-filter: blur(25px);"></div>
